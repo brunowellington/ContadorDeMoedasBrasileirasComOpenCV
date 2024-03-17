@@ -30,7 +30,7 @@ git clone https://github.com/brunowellington/ContadorDeMoedasBrasileirasComOpenC
 cd ContadorDeMoedasBrasileirasComOpenCV
 ```
 
-3. Instale antes um .venv ao seu projeto e depois instale as dependências usando pip:
+3. Instale antes um ambiente virtual e inicie, depois instale as dependências usando pip:
 
 ```bash
 pip install -r requirements.txt
