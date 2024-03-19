@@ -72,7 +72,7 @@ def classify_coin(coin_roi, coin_classifier):
     return predicted_coin_class
 
 # Carrega o modelo de classificação treinado
-coin_classifier = load_model("mode_acurracy82.h5")
+coin_classifier = load_model("model85%.h5")
 
 # Captura de vídeo da webcam
 video_capture = cv2.VideoCapture(1)
