@@ -17,10 +17,14 @@ def detect_and_count_coins(frame, coin_classifier):
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     
     # Aplicação de um filtro de suavização
-    blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+    blurred = cv2.GaussianBlur(gray, (7, 7), 0)
     
     # Detecção de bordas
     edges = cv2.Canny(blurred, 30, 150)
+    
+    # Dilatação e erosão para fechar lacunas nos contornos
+    kernel = np.ones((3,3), np.uint8)
+    edges = cv2.morphologyEx(edges, cv2.MORPH_CLOSE, kernel)
     
     # Detecção de contornos
     contours, _ = cv2.findContours(edges.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -31,7 +35,7 @@ def detect_and_count_coins(frame, coin_classifier):
     # Iteração sobre os contornos encontrados
     for contour in contours:
         area = cv2.contourArea(contour)
-        if 1000 < area < 5000:  # Ajuste os valores de área conforme necessário para filtrar os contornos
+        if 1000 < area < 500000:  # Ajuste os valores de área conforme necessário para filtrar os contornos
             # Recorta a região da moeda
             x, y, w, h = cv2.boundingRect(contour)
             coin_roi = frame[y:y+h, x:x+w]
