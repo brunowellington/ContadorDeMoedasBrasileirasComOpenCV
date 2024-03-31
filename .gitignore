@@ -160,8 +160,3 @@ cython_debug/
 #.idea/
 
 # Pastas a serem ignoradas
-val_data/
-train_data/
-Imagens/
-datasetNovo/
-datasetNovoComAntigo/
